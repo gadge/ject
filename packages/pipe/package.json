@@ -15,8 +15,6 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@ject/oneself": "^0.0.2",
-    "@typen/nullish": "^0.1.5"
   },
   "repository": {
     "type": "git",

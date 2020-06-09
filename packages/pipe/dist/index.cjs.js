@@ -2,29 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var oneself = require('@ject/oneself');
-var nullish = require('@typen/nullish');
-
 const duopipe = (alpha, beta) => {
-  let a = nullish.nullish(alpha),
-      b = nullish.nullish(beta);
-  if (!a && !b) return x => beta(alpha(x));
-  if (!a) return alpha;
-  if (!b) return beta;
-  return oneself.oneself;
+  if (!alpha) return beta;
+  if (!beta) return alpha;
+  return x => beta(alpha(x));
 };
 const pipemany = (...funcs) => {
-  var _func;
+  let l = funcs.length,
+      func = void 0,
+      temp = void 0;
 
-  let size = funcs.length,
-      func,
-      temp;
+  while (l >= 0) if (func = funcs[l--]) break;
 
-  while (size >= 0) if (func = funcs[size--]) break;
+  while (l >= 0) if (temp = funcs[l--]) func = duopipe(temp, func);
 
-  while (size >= 0) if (temp = funcs[size--]) func = duopipe(temp, func);
-
-  return (_func = func) !== null && _func !== void 0 ? _func : oneself.oneself;
+  return func;
 };
 const pipe = (...funcs) => {
   let l = funcs.length;

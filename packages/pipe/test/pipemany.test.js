@@ -1,3 +1,4 @@
+import { oneself }  from '@ject/oneself'
 import { ros }      from '@palett/ros'
 import { decoFunc } from '@spare/deco-func'
 import { says }     from '@spare/logger'
@@ -26,7 +27,7 @@ const test = () => {
   value |> pipe(alpha, null, null)       |> decoFunc |> says['pipe'].br(tap(ALPHA, NULL, NULL))
   value |> pipe(null, beta, null)   |> decoFunc |> says['pipe'].br(tap(NULL, BETA, NULL))
   value |> pipe(null, null, gamma)  |> decoFunc |> says['pipe'].br(tap(NULL, NULL, GAMMA))
-  value |> pipe(null, null, null)   |> decoFunc |> says['pipe'].br(tap(NULL, NULL, NULL))
+  value |> (pipe(null, null, null) ?? oneself)   |> decoFunc |> says['pipe'].br(tap(NULL, NULL, NULL))
 }
 
 test()

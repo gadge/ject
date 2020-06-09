@@ -1,19 +1,14 @@
-import { oneself } from '@ject/oneself'
-import { nullish } from '@typen/nullish'
-
 export const duopipe = (alpha, beta) => {
-  let a = nullish(alpha), b = nullish(beta)
-  if (!a && !b) return x => beta(alpha(x))
-  if (!a) return alpha
-  if (!b) return beta
-  return oneself
+  if (!alpha) return beta
+  if (!beta) return alpha
+  return x => beta(alpha(x))
 }
 
 export const pipemany = (...funcs) => {
-  let size = funcs.length, func, temp
-  while (size >= 0) if ((func = funcs[size--])) break
-  while (size >= 0) if ((temp = funcs[size--])) func = duopipe(temp, func)
-  return func ?? oneself
+  let l = funcs.length, func = void 0, temp = void 0
+  while (l >= 0) if ((func = funcs[l--])) break
+  while (l >= 0) if ((temp = funcs[l--])) func = duopipe(temp, func)
+  return func
 }
 
 export const pipe = (...funcs) => {
