@@ -1,7 +1,7 @@
 {
-  "name": "@ject/oneself",
+  "name": "@ject/noop",
   "version": "0.0.3",
-  "description": "Util for functions",
+  "description": "A noop function: ()=>{}",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -21,8 +21,7 @@
   "keywords": [
     "ject",
     "function",
-    "itself",
-    "oneself"
+    "noop"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",
