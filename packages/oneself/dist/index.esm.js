@@ -1,3 +1,4 @@
 const oneself = x => x;
+const Oneself = () => oneself;
 
-export { oneself };
+export { Oneself, oneself };

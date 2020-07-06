@@ -1,1 +1,1 @@
-export { oneself } from './src/oneself'
+export { oneself, Oneself } from './src/oneself'
