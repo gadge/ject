@@ -1,0 +1,41 @@
+{
+  "name": "@ject/argnames",
+  "version": "0.0.5",
+  "description": "Util for functions",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "dependencies": {
+    "@typen/nullish": "^0.1.5",
+    "strip-json-comments": "^3.1.1"
+  },
+  "devDependencies": {
+    "@typen/num-loose": "^0.1.5",
+    "@spare/ripper": "^0.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/ject.git"
+  },
+  "keywords": [
+    "ject",
+    "function",
+    "itself",
+    "argnames"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/ject"
+  },
+  "homepage": "https://github.com/hoyeungw/ject#readme"
+}
