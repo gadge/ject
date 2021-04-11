@@ -1,5 +1,5 @@
-## @ject/callable
-Make class callable.
+## @ject/mixin
+Make class mixin.
 
 [![npm version][badge-npm-version]][url-npm]
 [![npm download monthly][badge-npm-download-monthly]][url-npm]
@@ -11,32 +11,32 @@ Make class callable.
 [![github commit total][badge-github-commit-count]][url-github]
 
 [//]: <> (Shields)
-[badge-npm-version]: https://flat.badgen.net/npm/v/@ject/callable
-[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@ject/callable
-[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@ject/callable
-[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@ject/callable
-[badge-npm-license]: https://flat.badgen.net/npm/license/@ject/callable
-[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@ject/callable
+[badge-npm-version]: https://flat.badgen.net/npm/v/@ject/mixin
+[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@ject/mixin
+[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@ject/mixin
+[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@ject/mixin
+[badge-npm-license]: https://flat.badgen.net/npm/license/@ject/mixin
+[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@ject/mixin
 [badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/vect
 [badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/vect
 
 [//]: <> (Link)
-[url-npm]: https://npmjs.org/package/@ject/callable
-[url-pp]: https://packagephobia.now.sh/result?p=@ject/callable
+[url-npm]: https://npmjs.org/package/@ject/mixin
+[url-pp]: https://packagephobia.now.sh/result?p=@ject/mixin
 [url-github]: https://github.com/hoyeungw/vect
 
 ## Features
 
-- Make class callable
+- Make class mixin
 
 ## Install
 ```console
-$ npm install @ject/callable
+$ npm install @ject/mixin
 ```
 
 ## Usage
 ```js
-import { Callable } from '@ject/callable'
+import { Callable } from '@ject/mixin'
 // inherit the class Callable
 class CallableClass extends Callable {
   constructor (a, b) {
