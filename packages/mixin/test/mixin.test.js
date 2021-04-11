@@ -1,3 +1,6 @@
+import { deco, says } from '@spare/logger'
+import { mixin }      from '../index'
+
 class Base {
   type = 'base'
   constructor() {}
@@ -15,5 +18,9 @@ class Squad extends Base {
   }
 }
 
-const squad = new Squad()
+const Mixed = mixin(Base, Fund)
+const mixed = new Mixed()
 
+Base |> deco |> says['Base']
+Squad |> deco |> says['Squad']
+mixed |> deco |> says['mixed']

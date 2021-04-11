@@ -5,10 +5,14 @@ export function mixin(...ClassCollection) {
         assign(this, new Base(options)) // copy instance properties of class
     }
   }
-  for (let Base of ClassCollection) {
-    assign(Inherited, Base) // copy static properties of class
-    assign(Inherited.prototype, Base.prototype) // copy prototype properties of class
-  }
+  for (let Base of ClassCollection)
+    inherit(Inherited, Base)
+  return Inherited
+}
+
+export const inherit = (Inherited, Base) => {
+  assign(Inherited, Base) // copy static properties of class
+  assign(Inherited.prototype, Base.prototype) // copy prototype properties of class
   return Inherited
 }
 

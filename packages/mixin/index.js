@@ -1,1 +1,1 @@
-export { Callable } from './src/mixin'
+export { assign, inherit, mixin } from './src/mixin'
