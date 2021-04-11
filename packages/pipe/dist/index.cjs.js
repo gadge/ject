@@ -20,20 +20,10 @@ const pipemany = (...funcs) => {
 };
 const pipe = (...funcs) => {
   let l = funcs.length;
-
-  switch (l) {
-    case 0:
-      return void 0;
-
-    case 1:
-      return funcs[0];
-
-    case 2:
-      return duopipe.apply(null, funcs);
-
-    default:
-      return pipemany.apply(null, funcs);
-  }
+  if (l === 0) return void 0;
+  if (l === 1) return funcs[0];
+  if (l === 2) return duopipe.apply(null, funcs);
+  return pipemany.apply(null, funcs);
 };
 
 exports.duopipe = duopipe;
