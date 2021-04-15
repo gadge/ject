@@ -1,7 +1,6 @@
 import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
-import * as Mixin                    from '../src/mixin'
-import { inherit }                   from '../src/mixin'
+import * as Mixin                    from '../index'
 import { Util }                      from './assets/classUtil'
 import { Loggable }                  from './assets/points/Loggable'
 import { Point }                     from './assets/points/Point'
@@ -26,22 +25,21 @@ const { lapse, result } = strategies({
     rea: (A, B) => {
       const C = class {
         constructor(options) {
-          Object.assign(this, new A(options))
-          Object.assign(this, new B(options))
-        }
-      }
-      Object.assign(C.prototype, A.prototype)
-      Object.assign(C.prototype, B.prototype)
-      return C
-    },
-    arc: (A, B) => {
-      const C = class {
-        constructor(options) {
           Mixin.assign(this, new A(options))
           Mixin.assign(this, new B(options))
         }
       }
       Object.setPrototypeOf(C, { ...B.prototype, ...A.prototype })
+      return C
+    },
+    arc: (A, B) => {
+      const C = class extends A {
+        constructor(options) {
+          super(options)
+          Mixin.assign(this, new B(options))
+        }
+      }
+      Mixin.assign(C.prototype, B.prototype)
       return C
     },
     dev: (A, B) => {
@@ -72,7 +70,7 @@ const { lapse, result } = strategies({
             Mixin.assign(this, new Ancestor(options))
         }
       }
-      for (let Ancestor of Ancestors) inherit(Hybrid, Ancestor)
+      for (let Ancestor of Ancestors) Mixin.inherit(Hybrid, Ancestor)
       return Hybrid
     },
   }
