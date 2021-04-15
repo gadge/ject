@@ -1,9 +1,9 @@
 import { decoCrostab, logger, says } from '@spare/logger'
-import { strategies }                from '@valjoux/strategies'
-import * as Mixin                    from '../index'
-import { Util }                      from './assets/classUtil'
-import { Loggable }                  from './assets/points/Loggable'
-import { Point }                     from './assets/points/Point'
+import { strategies } from '@valjoux/strategies'
+import * as Mixin     from '../../index'
+import { Util }       from '../assets/classUtil'
+import { Loggable }   from '../assets/points/Loggable'
+import { Point }      from '../assets/points/Point'
 
 const { lapse, result } = strategies({
   repeat: 5E+4,
