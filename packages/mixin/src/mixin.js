@@ -1,25 +1,31 @@
-export function mixin(...ClassCollection) {
-  class Inherited {
-    constructor(options) {
-      for (let Base of ClassCollection)
-        assign(this, new Base(options)) // copy instance properties of class
-    }
-  }
-  for (let Base of ClassCollection)
-    inherit(Inherited, Base)
-  return Inherited
-}
-
-export const inherit = (Inherited, Base) => {
-  assign(Inherited, Base) // copy static properties of class
-  assign(Inherited.prototype, Base.prototype) // copy prototype properties of class
-  return Inherited
-}
-
 const
   CONSTRUCTOR = 'constructor',
-  PROTOTYPE = 'prototype',
-  NAME = 'name'
+  PROTOTYPE   = 'prototype',
+  NAME        = 'name'
+
+export function mixin(...Ancestors) {
+  // copy instance properties of class
+  const Inherited = class {
+    constructor(options) {
+      for (let Ancestor of Ancestors)
+        assign(this, new Ancestor(options))
+    }
+  }
+  // copy static and prototype properties of class
+  for (let Ancestor of Ancestors)
+    inherit(Inherited, Ancestor)
+  const name = this?.name ?? Ancestors.map(({ name }) => name).join('')
+  Object.defineProperty(Inherited, NAME, { value: name })
+
+  return Inherited
+}
+
+export const inherit = (Inherited, Ancestor) => {
+  assign(Inherited, Ancestor) // copy static properties of class
+  assign(Inherited.prototype, Ancestor.prototype) // copy prototype properties of class
+  return Inherited
+}
+
 export function assign(target, source) {
   for (let key of Reflect.ownKeys(source)) {
     if (key === CONSTRUCTOR || key === PROTOTYPE || key === NAME) continue

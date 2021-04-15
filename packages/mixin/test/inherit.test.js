@@ -32,3 +32,4 @@ Base |> deco |> says['Base']
 Object.assign({}, Base) |> deco |> says['Base']
 Squad |> deco |> says['Squad']
 squad |> deco |> says['squad']
+squad.log('some')
