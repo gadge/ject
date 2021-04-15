@@ -1,6 +1,6 @@
 {
   "name": "@ject/mixin",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Create mixin class inherits from multiple bases",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -13,8 +13,6 @@
   "scripts": {
     "pub": "npm publish",
     "test": "node -r @babel/register test/test.index.js"
-  },
-  "devDependencies": {
   },
   "repository": {
     "type": "git",
