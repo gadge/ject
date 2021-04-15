@@ -2,7 +2,7 @@ import { Point } from './Point'
 
 export class Round extends Point {
 
-  constructor(options) {
+  constructor(options = {}) {
     super(options)
     this.type = 'round'
     this.r = options.r ?? 1

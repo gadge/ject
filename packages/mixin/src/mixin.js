@@ -1,11 +1,16 @@
-const
-  CONSTRUCTOR = 'constructor',
-  PROTOTYPE   = 'prototype',
-  NAME        = 'name'
+import { rename }  from '@ject/rename'
+import { assign }  from './assign'
+import { inherit } from './inherit'
 
 export function mixin(...Ancestors) {
   // copy instance properties of class
-  const Inherited = class {
+  const length = Ancestors.length
+  if (length === 1) return Ancestors[0]
+  if (length === 2) {
+    const [ A, B ] = Ancestors
+    return duomixin(A, B)
+  }
+  const Hybrid = class {
     constructor(options) {
       for (let Ancestor of Ancestors)
         assign(this, new Ancestor(options))
@@ -13,23 +18,22 @@ export function mixin(...Ancestors) {
   }
   // copy static and prototype properties of class
   for (let Ancestor of Ancestors)
-    inherit(Inherited, Ancestor)
-  const name = this?.name ?? Ancestors.map(({ name }) => name).join('')
-  Object.defineProperty(Inherited, NAME, { value: name })
+    inherit(Hybrid, Ancestor)
+  // rename class
+  rename(Hybrid, this?.name ?? Ancestors.map(({ name }) => name).join(''))
 
-  return Inherited
+  return Hybrid
 }
 
-export const inherit = (Inherited, Ancestor) => {
-  assign(Inherited, Ancestor) // copy static properties of class
-  assign(Inherited.prototype, Ancestor.prototype) // copy prototype properties of class
-  return Inherited
-}
-
-export function assign(target, source) {
-  for (let key of Reflect.ownKeys(source)) {
-    if (key === CONSTRUCTOR || key === PROTOTYPE || key === NAME) continue
-    const desc = Object.getOwnPropertyDescriptor(source, key)
-    Object.defineProperty(target, key, desc)
+export function duomixin(A, B) {
+  const Hybrid = class extends A {
+    constructor(options) {
+      super(options)
+      assign(this, new B(options))
+    }
   }
+  inherit(Hybrid, B)
+  rename(Hybrid, this?.name ?? (A.name + B.name))
+  return Hybrid
 }
+

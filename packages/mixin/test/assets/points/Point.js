@@ -9,7 +9,7 @@ export class Point {
     this.y = options.y ?? 0
     if (options.name) this.name = options.name
     this.type = 'point'
-    console.log(this.type)
+    // console.log(this.type)
   }
   move(dx, dy) { return this.x += dx, this.y += dy, this }
   get coordinate() { return [ this.x, this.y ] }
