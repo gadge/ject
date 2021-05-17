@@ -22,8 +22,6 @@ const inherit = (Inherited, Ancestor) => {
 };
 
 function mixin(...Ancestors) {
-  var _this$name;
-
   // copy instance properties of class
   const length = Ancestors.length;
   if (length === 1) return Ancestors[0];
@@ -43,14 +41,12 @@ function mixin(...Ancestors) {
   for (let Ancestor of Ancestors) inherit(Hybrid, Ancestor); // rename class
 
 
-  rename(Hybrid, (_this$name = this === null || this === void 0 ? void 0 : this.name) !== null && _this$name !== void 0 ? _this$name : Ancestors.map(({
+  rename(Hybrid, (this == null ? void 0 : this.name) ?? Ancestors.map(({
     name
   }) => name).join(''));
   return Hybrid;
 }
 function duomixin(A, B) {
-  var _this$name2;
-
   const Hybrid = class extends A {
     constructor(options) {
       super(options);
@@ -59,7 +55,7 @@ function duomixin(A, B) {
 
   };
   inherit(Hybrid, B);
-  rename(Hybrid, (_this$name2 = this === null || this === void 0 ? void 0 : this.name) !== null && _this$name2 !== void 0 ? _this$name2 : A.name + B.name);
+  rename(Hybrid, (this == null ? void 0 : this.name) ?? A.name + B.name);
   return Hybrid;
 }
 
