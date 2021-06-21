@@ -6,9 +6,18 @@ export class Method {
   #n
   #arg
   ctx
-  constructor(fn) {
-    this.function = fn
+  constructor(fn, mode) {
+    this.fn = fn
+    this.mode = valid(mode) ? mode : fn.length
+
   }
+  static build(fn, arg, ctx, mode) {
+    const method = new Method(fn, arg, ctx, mode)
+    if (valid(arg)) method.arg = arg
+    if (valid(ctx)) method.ctx = ctx
+    return method
+  }
+  static create({ fn, arg, ctx, mode }) { return Method.build(fn, arg, ctx, mode) }
 
   get mode() { return this.#n }
   set mode(n) {
@@ -26,11 +35,13 @@ export class Method {
     if (n === 1) return this.#arg = val
     if (n >= 2) return this.#arg = Array.isArray(val) ? val : [ val ]
   }
+
   get function() { return this.fn }
   set function(fn) {
     this.fn = fn
     if (nullish(this.mode)) this.mode = this.fn.length
   }
+
   get context() { return this.ctx }
   set context(ctx) { return this.ctx = ctx }
 
