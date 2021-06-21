@@ -1,6 +1,6 @@
 {
   "name": "@ject/method",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Method class",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
