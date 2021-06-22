@@ -1,6 +1,6 @@
 {
   "name": "@ject/pipe",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Util for functions",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
