@@ -1,6 +1,6 @@
 import { decoFlat, logger, xr } from '@spare/logger'
 import { tapDot }               from '@spare/tap'
-import { Method }               from '../src/method'
+import { Chore }                from '../src/Chore'
 
 const candidates = {
   a_0() { return Array.from(arguments) },
@@ -15,7 +15,7 @@ const candidates = {
 
 
 for (const [ key, func ] of Object.entries(candidates)) {
-  const method = new Method(func)
-  method.arg = [ 1, 2, 3 ]
-  xr(key).arg(method.arg).mode(method.mode).called(decoFlat(method.call())) |> logger
+  const chore = new Chore(func)
+  chore.arg = [ 1, 2, 3 ]
+  xr(key).arg(chore.arg).mode(chore.mode).called(decoFlat(chore.caller())) |> logger
 }
