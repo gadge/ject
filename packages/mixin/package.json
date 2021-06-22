@@ -1,6 +1,6 @@
 {
   "name": "@ject/mixin",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Create mixin class inherits from multiple bases",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@ject/rename": "^0.0.14",
+    "@ject/rename": "^0.0.15",
     "@vect/vector-mapper": "^0.3.9"
   },
   "repository": {
