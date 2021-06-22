@@ -11,7 +11,7 @@ export class Chore {
 
   }
   static build(fn, arg, ctx, mode) {
-    const method = new Chore(fn, arg, ctx, mode)
+    const method = new Chore(fn, mode)
     if (valid(arg)) method.arg = arg
     if (valid(ctx)) method.ctx = ctx
     return method
@@ -36,13 +36,13 @@ export class Chore {
   }
 
   get caller() {
-    const { fn, ctx, arg } = this
+    const { mode, fn, ctx, arg } = this
     return valid(ctx)
-      ? nullish(arg) ? fn.bind(ctx) // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? fn.bind(ctx, arg)
+      ? nullish(arg) ? fn.bind(ctx) // || mode === 0 ?
+        : mode === 1 || !Array.isArray(arg) ? fn.bind(ctx, arg)
           : fn.bind(ctx, ...arg)
-      : nullish(arg) ? fn // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? () => fn(arg)
+      : nullish(arg) ? fn // || mode === 0 ?
+        : mode === 1 || !Array.isArray(arg) ? () => fn(arg)
           : () => fn(...arg)
   }
   set caller(fn) {
@@ -55,13 +55,13 @@ export class Chore {
 
   invoke(arg) {
     arg = arg ?? this.arg
-    const { ctx, fn } = this
+    const { mode, ctx, fn } = this
     return valid(ctx)
-      ? nullish(arg) ? fn.call(ctx) // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? fn.call(ctx, arg)
+      ? nullish(arg) ? fn.call(ctx) // || mode === 0 ?
+        : mode === 1 || !Array.isArray(arg) ? fn.call(ctx, arg)
           : fn.apply(ctx, arg)
-      : nullish(arg) ? fn() // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? fn(arg)
+      : nullish(arg) ? fn() // || mode === 0 ?
+        : mode === 1 || !Array.isArray(arg) ? fn(arg)
           : fn(...arg)
   }
 }
