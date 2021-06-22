@@ -1,7 +1,6 @@
 import { nullish, valid } from '@typen/nullish'
 
-
-export class Method {
+export class Chore {
   fn
   #n
   #arg
@@ -12,12 +11,12 @@ export class Method {
 
   }
   static build(fn, arg, ctx, mode) {
-    const method = new Method(fn, arg, ctx, mode)
+    const method = new Chore(fn, arg, ctx, mode)
     if (valid(arg)) method.arg = arg
     if (valid(ctx)) method.ctx = ctx
     return method
   }
-  static create({ fn, arg, ctx, mode }) { return Method.build(fn, arg, ctx, mode) }
+  static create({ fn, arg, ctx, mode }) { return Chore.build(fn, arg, ctx, mode) }
 
   get mode() { return this.#n }
   set mode(n) {
@@ -36,8 +35,17 @@ export class Method {
     if (n >= 2) return this.#arg = Array.isArray(val) ? val : [ val ]
   }
 
-  get function() { return this.fn }
-  set function(fn) {
+  get caller() {
+    const { fn, ctx, arg } = this
+    return valid(ctx)
+      ? nullish(arg) ? fn.bind(ctx) // || this.#n === 0 ?
+        : this.#n === 1 || !Array.isArray(arg) ? fn.bind(ctx, arg)
+          : fn.bind(ctx, ...arg)
+      : nullish(arg) ? fn // || this.#n === 0 ?
+        : this.#n === 1 || !Array.isArray(arg) ? () => fn(arg)
+          : () => fn(...arg)
+  }
+  set caller(fn) {
     this.fn = fn
     if (nullish(this.mode)) this.mode = this.fn.length
   }
@@ -45,15 +53,16 @@ export class Method {
   get context() { return this.ctx }
   set context(ctx) { return this.ctx = ctx }
 
-  call(arg) {
-    arg = arg ?? this.#arg
-    return valid(this.ctx)
-      ? nullish(arg) ? this.fn.call(this.ctx) // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? this.fn.call(this.ctx, arg)
-          : this.fn.apply(this.ctx, arg)
-      : nullish(arg) ? this.fn() // || this.#n === 0 ?
-        : this.#n === 1 || !Array.isArray(arg) ? this.fn(arg)
-          : this.fn(...arg)
+  invoke(arg) {
+    arg = arg ?? this.arg
+    const { ctx, fn } = this
+    return valid(ctx)
+      ? nullish(arg) ? fn.call(ctx) // || this.#n === 0 ?
+        : this.#n === 1 || !Array.isArray(arg) ? fn.call(ctx, arg)
+          : fn.apply(ctx, arg)
+      : nullish(arg) ? fn() // || this.#n === 0 ?
+        : this.#n === 1 || !Array.isArray(arg) ? fn(arg)
+          : fn(...arg)
   }
 }
 
