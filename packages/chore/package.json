@@ -1,7 +1,7 @@
 {
-  "name": "@ject/method",
+  "name": "@ject/chore",
   "version": "0.0.14",
-  "description": "Method class",
+  "description": "Chore class",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node -r @babel/register test/chore.test.js"
   },
   "dependencies": {
     "@typen/nullish": "^0.1.17"

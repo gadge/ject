@@ -1,4 +1,4 @@
-## @ject/method
+## @ject/chore
 Make class method.
 
 [![npm version][badge-npm-version]][url-npm]
@@ -11,18 +11,18 @@ Make class method.
 [![github commit total][badge-github-commit-count]][url-github]
 
 [//]: <> (Shields)
-[badge-npm-version]: https://flat.badgen.net/npm/v/@ject/method
-[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@ject/method
-[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@ject/method
-[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@ject/method
-[badge-npm-license]: https://flat.badgen.net/npm/license/@ject/method
-[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@ject/method
+[badge-npm-version]: https://flat.badgen.net/npm/v/@ject/chore
+[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@ject/chore
+[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@ject/chore
+[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@ject/chore
+[badge-npm-license]: https://flat.badgen.net/npm/license/@ject/chore
+[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@ject/chore
 [badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/vect
 [badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/vect
 
 [//]: <> (Link)
-[url-npm]: https://npmjs.org/package/@ject/method
-[url-pp]: https://packagephobia.now.sh/result?p=@ject/method
+[url-npm]: https://npmjs.org/package/@ject/chore
+[url-pp]: https://packagephobia.now.sh/result?p=@ject/chore
 [url-github]: https://github.com/hoyeungw/vect
 
 ## Features
@@ -31,12 +31,12 @@ Make class method.
 
 ## Install
 ```console
-$ npm install @ject/method
+$ npm install @ject/chore
 ```
 
 ## Usage
 ```js
-import { Callable } from '@ject/method'
+import { Callable } from '@ject/chore'
 // inherit the class Callable
 class CallableClass extends Callable {
   constructor (a, b) {
