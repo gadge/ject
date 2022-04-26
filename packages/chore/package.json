@@ -1,8 +1,8 @@
 {
   "name": "@ject/chore",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Chore class",
-"main": "./dist/index.cjs",
+  "main": "./dist/index.cjs",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.cjs"

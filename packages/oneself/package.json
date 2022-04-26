@@ -1,8 +1,8 @@
 {
   "name": "@ject/oneself",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Util for functions",
-"main": "./dist/index.cjs",
+  "main": "./dist/index.cjs",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.cjs"
