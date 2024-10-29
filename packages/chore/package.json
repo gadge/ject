@@ -2,14 +2,14 @@
   "name": "@ject/chore",
   "version": "0.0.17",
   "description": "Chore class",
-  "main": "./dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/chore.test.js"
   },
   "dependencies": {
-    "@typen/nullish": "^0.1.17"
+    "@typen/nullish": "^0.2.0"
   },
   "repository": {
     "type": "git",

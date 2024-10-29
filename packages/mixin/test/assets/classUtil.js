@@ -6,10 +6,9 @@ export class Util {
   }
 
   static getDescriptors(Class) {
-    return Reflect
+    return Object.fromEntries(Reflect
       .ownKeys(Class?.prototype)
-      .map(key => [ key, Reflect.getOwnPropertyDescriptor(Class.prototype, key) ])
-      |> Object.fromEntries
+      .map(key => [ key, Reflect.getOwnPropertyDescriptor(Class.prototype, key) ]))
   }
 
   static getStaticMethodNames(Class) {
