@@ -1,6 +1,6 @@
 {
   "name": "@ject/callable",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "Make class callable",
   "type": "module",
   "exports": "./dist/index.js",

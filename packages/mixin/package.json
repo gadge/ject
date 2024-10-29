@@ -1,6 +1,6 @@
 {
   "name": "@ject/mixin",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "Create mixin class inherits from multiple bases",
   "type": "module",
   "exports": "./dist/index.js",
