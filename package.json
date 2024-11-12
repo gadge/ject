@@ -18,8 +18,8 @@
   "devDependencies": {
     "@acq/path": "^0.4.0",
     "@analys/crostab": "^0.7.2",
-    "@aryth/math": "^0.7.0",
-    "@aryth/rand": "^0.7.0",
+    "@aryth/math": "^0.7.3",
+    "@aryth/rand": "^0.7.3",
     "@changesets/cli": "^2.27.9",
     "@foba/foo": "^0.6.1",
     "@foba/object": "^0.6.1",
@@ -34,7 +34,7 @@
     "@typen/num-strict": "^0.2.0",
     "@valjoux/strategies": "^0.4.0",
     "@valjoux/timestamp-pretty": "^0.4.0",
-    "rollup": "^4.24.3",
+    "rollup": "^4.25.0",
     "rollup-plugin-fileinfo": "^0.3.0"
   }
 }
